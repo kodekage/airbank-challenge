@@ -2,22 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: Int!
-  email: String!
-  name: String
-  posts: [Post!]
-}
-
-type Post {
-  id: Int!
+type Transactions {
+  id: String!
+  account: String
+  description: String
+  category: String
+  reference: String
+  currency: String
+  amount: String
+  status: String
+  transactionDate: Timestamp!
   createdAt: Timestamp!
   updatedAt: Timestamp!
-  title: String!
-  content: String
-  published: Boolean
-  viewCount: Int!
-  author: User
 }
 
 """
@@ -26,41 +22,5 @@ type Post {
 scalar Timestamp
 
 type Query {
-  allUsers: [User!]
-  draftsByUser(userUniqueInput: UserUniqueInput!): [Post!]
-  postById(id: Float!): Post
-  feed(orderBy: PostOrderByUpdatedAtInput, take: Float, skip: Float, searchString: String): [Post!]!
-}
-
-input UserUniqueInput {
-  id: Float
-  email: String
-}
-
-input PostOrderByUpdatedAtInput {
-  updatedAt: SortOrder!
-}
-
-enum SortOrder {
-  asc
-  desc
-}
-
-type Mutation {
-  signupUser(data: UserCreateInput!): User!
-  createDraft(authorEmail: String!, data: PostCreateInput!): Post!
-  incrementPostViewCount(id: Float!): Post!
-  togglePublishPost(id: Float!): Post
-  deletePost(id: Float!): Post
-}
-
-input UserCreateInput {
-  email: String!
-  name: String
-  posts: [PostCreateInput!]
-}
-
-input PostCreateInput {
-  title: String!
-  content: String
+  getAllTransactions: [Transactions!]
 }

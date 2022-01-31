@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  airbank_db:
+    image: postgres:13.1
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 'airbank'
+      POSTGRES_USER: 'airbank'
+      POSTGRES_DB: 'airbank_db'
+      PG_DATA: /var/lib/postgresql/data
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./initdb.d:/docker-entrypoint-initdb.d
+      - ./prisma:/prisma/
+
+  pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.test
+      PGADMIN_DEFAULT_PASSWORD: airbank
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - "airbank_db:pgsql-server"
+
+volumes:
+  pgdata:
+    external: false
+  pgadmin-data:
