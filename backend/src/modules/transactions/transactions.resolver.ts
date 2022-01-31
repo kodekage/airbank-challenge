@@ -10,4 +10,9 @@ export class TransactionResolver {
     async getAllTransactions() {
         return await this.prisma.transactions.findMany();
     }
+
+    @Query(returns => Transactions)
+    async getTransaction(@Args('id', { type: () => String }) id: string) {
+        return await this.prisma.transactions.findUnique({ where: { id }})
+    }
 }
