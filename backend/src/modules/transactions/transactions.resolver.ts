@@ -15,4 +15,19 @@ export class TransactionResolver {
     async getTransaction(@Args('id', { type: () => String }) id: string) {
         return await this.prisma.transactions.findUnique({ where: { id }})
     }
+
+    @Query(returns => [Transactions])
+    async getTransactionsRange(
+        @Args('startDate', { type: () => Date }) startDate: Date,
+        @Args('endDate', { type: () => Date }) endDate: Date,
+    ) {
+        return this.prisma.transactions.findMany({
+            where: {
+                transactionDate: {
+                    gte: new Date(startDate),
+                    lte: new Date(endDate)
+                }
+            }
+        })
+    }
 }

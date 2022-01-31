@@ -24,4 +24,5 @@ scalar Timestamp
 type Query {
   getAllTransactions: [Transactions!]
   getTransaction(id: String!): Transactions!
+  getTransactionsRange(endDate: Timestamp!, startDate: Timestamp!): [Transactions!]!
 }
