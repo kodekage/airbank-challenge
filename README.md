@@ -1,6 +1,6 @@
 # airbank-challenge
 
-This code repository contains the backend and frontend service for the fullstack system based on the code challenge give.
+This code repository contains the backend and frontend source code for the fullstack system based on the code challenge given.
 
 ## Backend Service
 #### Technology Used
