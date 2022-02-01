@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { PrismaService } from './prisma.service'
-import { join } from 'path'
-import { TransactionsModule } from './modules/transactions/transactions.module'
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { PrismaService } from './prisma.service';
+import { join } from 'path';
+import { TransactionsModule } from './modules/transactions/transactions.module';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { TransactionsModule } from './modules/transactions/transactions.module'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       buildSchemaOptions: { dateScalarMode: 'timestamp' },
     }),
-    TransactionsModule
+    TransactionsModule,
   ],
   controllers: [],
   providers: [PrismaService],
