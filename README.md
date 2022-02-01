@@ -1,28 +1,47 @@
 # airbank-challenge
 
+This code repository contains the backend and frontend service for the fullstack system based on the code challenge give.
 
+## Backend Service
+#### Technology Used
+- Typecript
+- Nestjs
+- GraphQL
+- Prisma(ORM)
+- PostgresSQL
+- Docker (used for provisioning database infrastructure)
 
-## Code Challenge Frontend 
+## Frontend Service
+#### Technology Used
+- Javascript
+- Vue
+- Vue Apollo
 
 ## Project setup
+
+To setup up this project locally, please ensure you have the make utility installed on your laptop.
+
+### Installing Project Dependencies
+
 ```
-npm install
+make
+```
+or
+```
+make setup
 ```
 
-### Compiles and hot-reloads for development
+After you've successfully installed the project dependencies, please run the following make commands accordingly
+in seperate terminal process inside in the airbank-challenge directory (the directory containing the Makefile)
+
 ```
-npm run serve
+make db
 ```
 
-### Compiles and minifies for production
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+make server
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+make spa
+```
