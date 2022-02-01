@@ -24,19 +24,7 @@
       </thead>
 
       <tbody v-for="transaction in transactions" :key="transaction.id">
-        <tr>
-          <td>{{ transaction.id }}</td>
-          <td>{{ transaction.account }}</td>
-          <td>{{ transaction.description }}</td>
-          <td>{{ transaction.category }}</td>
-          <td>{{ transaction.reference }}</td>
-          <td>{{ transaction.currency }}</td>
-          <td>{{ transaction.amount }}</td>
-          <td>{{ transaction.status }}</td>
-          <td>{{ transaction.transactionDate }}</td>
-          <td>{{ transaction.createdAt }}</td>
-          <td>{{ transaction.updatedAt }}</td>
-        </tr>
+        <TransactionRow :transaction="transaction" />
       </tbody>
     </table>
   </div>
@@ -44,11 +32,16 @@
 
 <script>
 import gql from 'graphql-tag'
+import TransactionRow from './TransactionRow.vue'
+
 
 export default {
-  name: 'HelloWorld',
+  name: 'Transactions',
   props: {
     title: String
+  },
+  components: {
+    TransactionRow
   },
   data() {
     return {
@@ -84,36 +77,38 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-table {
-  border: 1px solid #2c3e5046;
-  margin: auto;
-  padding: 0 2em;
-  text-align: left;
-  border-collapse: collapse;
-  overflow-x: auto;
-}
-td, th {
-    border-top: 1px solid #2c3e5046;
-    border-left: 1px solid #2c3e5046;
-    padding: 3px 3px;
-}
-.dateFilter {
-  margin-bottom: 2em;
-}
+  h3 {
+    margin: 40px 0 0;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {
+    color: #42b983;
+  }
+  table {
+    border: 1px solid #2c3e5046;
+    margin: auto;
+    padding: 0 2em;
+    text-align: left;
+    border-collapse: collapse;
+    overflow-x: auto;
+  }
+  tr {
+    cursor: pointer;
+  }
+  th {
+      border-top: 1px solid #2c3e5046;
+      border-left: 1px solid #2c3e5046;
+      padding: 3px 3px;
+  }
+  .dateFilter {
+    margin-bottom: 2em;
+  }
 </style>
