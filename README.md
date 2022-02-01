@@ -39,9 +39,21 @@ make db
 ```
 
 ```
+make migrate
+```
+
+```
 make server
 ```
 
 ```
 make spa
+```
+
+### Running Tests
+
+To run the backend test suit
+
+```
+make test
 ```

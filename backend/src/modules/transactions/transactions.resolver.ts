@@ -1,5 +1,5 @@
 import { Args, Context, Query, Resolver } from "@nestjs/graphql";
-import { PrismaService } from "src/prisma.service";
+import { PrismaService } from "../../prisma.service";
 import { Transactions } from "./transactions.model";
 
 @Resolver(of => Transactions)
